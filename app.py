@@ -49,11 +49,14 @@ def save_diary():
     save_to1 = f'static/{filename1}'
     file1.save(save_to1)
     
+    time= today.strftime('%Y.%m.%d')
+    
     doc = {
         'file': filename,
         'file1': filename1,
         'title':title_receive,
-        'content':content_receive
+        'content':content_receive,
+        'time' : time,
     }
     db.diary.insert_one(doc)
     return jsonify({'msg': 'POST request complete!'})
